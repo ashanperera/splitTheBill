@@ -6,40 +6,48 @@ import { IExpenseMap } from '../models/expenseMap.model';
 })
 export class ExpenseMapService {
 
-  private expenseMap: any[] = [];
+  private expenseMap = [];
 
   constructor() { }
 
   getPerson(friendId: number): IExpenseMap | boolean {
-    const foundEntry: IExpenseMap[] = this.expenseMap.filter(friend => friend.friendId == friendId);
-    return foundEntry.length > 0 ? foundEntry[0] : false;
-
+    if(this.expenseMap) {
+      const foundEntry: IExpenseMap[] = this.expenseMap.filter(friend => friend.friendId == friendId);
+      return foundEntry.length > 0 ? foundEntry[0] : false;
+    } else {
+      return false;
+    }
   }
 
   addExpense(currentExpense: {friendId: number, amount: number}) {
     const foundEntry = this.getPerson(currentExpense.friendId);
     if (foundEntry) {
-      const index = this.expenseMap.indexOf(foundEntry);
-      this.expenseMap[index].expenses.push(currentExpense.amount);
+      const tempArr = [...this.expenseMap];
+      const index = tempArr.indexOf(foundEntry);
+      tempArr[index].expenses.push(currentExpense.amount);
+      this.expenseMap = tempArr;
     } else {
       const expenseMap: IExpenseMap  = { friendId: currentExpense.friendId, expenses: [currentExpense.amount] };
-      this.expenseMap.push(expenseMap);
+      this.expenseMap = [...this.expenseMap, expenseMap];
     }
   }
 
   settleUP(settleInfo: {friendFrom: number, friendTo: number, amount: number}){
     const foundEntry = this.getPerson(settleInfo.friendFrom);
     if (foundEntry) {
-      const index = this.expenseMap.indexOf(foundEntry);
-      if(this.expenseMap[index].settleInfo){
-        this.expenseMap[index].settleInfo.push({to: settleInfo.friendTo,  amount: settleInfo.amount});
+      const tempArr = [...this.expenseMap];
+      const index = tempArr.indexOf(foundEntry);
+      if(tempArr[index].settleInfo) {
+        tempArr[index].settleInfo.push({to: settleInfo.friendTo,  amount: settleInfo.amount});
       } else {
-        this.expenseMap[index].settleInfo = [{to: settleInfo.friendTo,  amount: settleInfo.amount}];
+        tempArr[index].settleInfo = [{to: settleInfo.friendTo,  amount: settleInfo.amount}];
       }
+      this.expenseMap = tempArr;
+      console.log('expenseList with settleInfo',  this.expenseMap);
     }
   }
 
-  getExpenseMap(){
+  getExpenseMap() {
     return this.expenseMap;
   }
 }

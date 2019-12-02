@@ -11,7 +11,6 @@ export class ManageFriendsService {
   addFriend(name) {
     const person: IFriend = { name, id: this.friends.length + 1 }
     this.friends.push(person);
-    console.log(this.friends)
   }
 
   getFriendList() {
