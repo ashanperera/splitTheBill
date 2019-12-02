@@ -11,7 +11,7 @@ export class ExpenseMapService {
   constructor() { }
 
   getPerson(friendId: number): IExpenseMap | boolean {
-    if(this.expenseMap) {
+    if (this.expenseMap) {
       const foundEntry: IExpenseMap[] = this.expenseMap.filter(friend => friend.friendId == friendId);
       return foundEntry.length > 0 ? foundEntry[0] : false;
     } else {
