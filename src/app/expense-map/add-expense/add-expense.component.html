@@ -5,7 +5,7 @@
             <div class="form-group col-md-6 col-sm-12">
                 <label>Friend: </label>
                 <select class="form-control" [(ngModel)]="friendId" name="friendId" id="add-expense-friendId" required>
-                    <option [value]="friend.id" *ngFor="let friend of friendList">{{friend.name}}</option>
+                    <option [value]="friend.id" *ngFor="let friend of friendsList">{{friend.name}}</option>
                 </select>
                 <em *ngIf="addExpenseForm.submitted && addExpenseForm.controls.friendId?.invalid">Required</em>
             </div>

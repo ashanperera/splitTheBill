@@ -15,7 +15,7 @@ export class ExpenseMapComponent {
 
   handleSaveExpenses(value){
     this.expenseList = value;
-    console.log('expenseList',  this.expenseList)
+    console.log('expenseList',  this.expenseList);
   }
 
 }

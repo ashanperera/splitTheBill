@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ManageFriendsService } from '../../shared/services/manage-friends.service';
 import { ExpenseMapService } from '../../shared/services/expense-map.service';
 import { IFriend } from '../../shared/models/friend.model';
@@ -8,8 +8,9 @@ import { IFriend } from '../../shared/models/friend.model';
   templateUrl: './settle-bill.component.html'
 })
 export class SettleBillComponent implements OnInit {
-  friendList: IFriend[];;
+  friendList: IFriend[];
   friendFrom = 1;
+  @Input() friendsList;
 
   constructor(private manageFriendsService: ManageFriendsService, private expenseMapService: ExpenseMapService) { }
 

@@ -5,14 +5,14 @@
                 <div class="form-group col-md-4 col-sm-12">
                     <label>From: </label>
                     <select class="form-control" [(ngModel)]="friendFrom" name="friendFrom" required>
-                        <option [value]="friend.id" *ngFor="let friend of friendList">{{friend.name}}</option>
+                        <option [value]="friend.id" *ngFor="let friend of friendsList">{{friend.name}}</option>
                     </select>
                     <em *ngIf="settleBillForm.submitted && settleBillForm.controls.friendFrom?.invalid">Required</em>
                 </div>
                 <div class="form-group col-md-4 col-sm-12">
                     <label>To: </label>
                     <select class="form-control" [(ngModel)]="friendTo" name="friendTo" required>
-                        <option [value]="friend.id" *ngFor="let friend of friendList">{{friend.name}}</option>
+                        <option [value]="friend.id" *ngFor="let friend of friendsList">{{friend.name}}</option>
                     </select>
                     <em *ngIf="settleBillForm.submitted && settleBillForm.controls.friendFrom?.invalid">Required</em>
                 </div>

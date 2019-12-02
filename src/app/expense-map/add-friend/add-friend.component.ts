@@ -16,8 +16,8 @@ export class AddFriendComponent implements OnInit {
 
   saveEvent(event: {name: string}) {
     this.manageFriendsService.addFriend(event.name);
-    const list = this.manageFriendsService.getFriendList()
-    this.saveFriendsList.emit(list)
+    const list = this.manageFriendsService.getFriendList();
+    this.saveFriendsList.emit(list);
   }
 
 }

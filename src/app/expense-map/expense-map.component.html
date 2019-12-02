@@ -1,10 +1,10 @@
 <app-add-friend (saveFriendsList)="handleFriendsList($event)"></app-add-friend>
 <div class="row"> 
     <div class="col-lg-6 col-sm-12">
-      <app-add-expense (saveExpenses)="handleSaveExpenses($event)"></app-add-expense>
+      <app-add-expense (saveExpenses)="handleSaveExpenses($event)" [friendsList]=friendsList></app-add-expense>
     </div>
     <div class="col-lg-6 col-sm-12">
-      <app-settle-bill></app-settle-bill>
+      <app-settle-bill [friendsList]=friendsList></app-settle-bill>
     </div>
 </div>
 <table id="expense-tbl" *ngIf="expenseList" class="table table-striped m-15">
