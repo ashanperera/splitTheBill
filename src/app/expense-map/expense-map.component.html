@@ -1,0 +1,31 @@
+<app-add-friend (saveFriendsList)="handleFriendsList($event)"></app-add-friend>
+<div class="row"> 
+    <div class="col-lg-6 col-sm-12">
+      <app-add-expense (saveExpenses)="handleSaveExpenses($event)"></app-add-expense>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <app-settle-bill></app-settle-bill>
+    </div>
+</div>
+<table id="expense-tbl" *ngIf="expenseList" class="table table-striped m-15">
+  <thead>
+  <tr>
+    <th scope="col">Person</th>
+    <th scope="col">Expense(s) (&pound;) </th>
+    <th scope="col">Total </th>
+    <th scope="col">SettledUp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let expense of expenseList;">
+    <th scope="row">{{ expense.friendId | getpersonname: friendsList }}</th>
+    <td>{{ expense?.expenses.join(', ') }}</td>
+    <td>{{ expense?.expenses | gettotal}}</td>
+    <td>
+        <p *ngFor="let sInfo of expense.settleInfo;">
+          settled {{sInfo.amount}} of {{ (sInfo.to != expense.friendId ? (sInfo.to | getpersonname: friendsList) : 'my bill') }}
+        </p> 
+    </td>
+  </tr>
+  </tbody>
+</table>

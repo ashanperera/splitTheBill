@@ -1,0 +1,27 @@
+<form  #settleBillForm="ngForm" (ngSubmit)="settleBillForm.valid && settleExpense(settleBillForm.value)">
+    <fieldset>
+        <legend>Settle Bill</legend>
+            <div class="row"> 
+                <div class="form-group col-md-4 col-sm-12">
+                    <label>From: </label>
+                    <select class="form-control" [(ngModel)]="friendFrom" name="friendFrom" required>
+                        <option [value]="friend.id" *ngFor="let friend of friendList">{{friend.name}}</option>
+                    </select>
+                    <em *ngIf="settleBillForm.submitted && settleBillForm.controls.friendFrom?.invalid">Required</em>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label>To: </label>
+                    <select class="form-control" [(ngModel)]="friendTo" name="friendTo" required>
+                        <option [value]="friend.id" *ngFor="let friend of friendList">{{friend.name}}</option>
+                    </select>
+                    <em *ngIf="settleBillForm.submitted && settleBillForm.controls.friendFrom?.invalid">Required</em>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                    <label>Amount (&pound;): </label>
+                    <input class="form-control" [(ngModel)]="amount" name="amount"  id="settle-amount" type="number" required/>
+                    <em *ngIf="settleBillForm.submitted && settleBillForm.controls.amount?.invalid">Required</em>
+                </div>
+            </div>
+            <button id="add-expense" type="submit" class="btn btn-primary" [disabled]="settleBillForm.invalid">Settle</button>
+    </fieldset>
+</form>

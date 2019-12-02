@@ -1,0 +1,12 @@
+<div class="row"> 
+    <div class="col-md-6 col-sm-12">
+            <form  #addFriendForm="ngForm" (ngSubmit)="addFriendForm.valid && saveEvent(addFriendForm.value)">
+                <fieldset id="add-friend-group" class="form-group">
+                    <label class="g-fl">Name of the friend:</label>
+                    <input class="form-control g-fl" [(ngModel)]="name" name="name"  id="name" type="text" required/>
+                    <button id="add-friend" type="submit" class="btn btn-primary g-fl">Add</button>
+                    <em *ngIf="addFriendForm.submitted && addFriendForm.controls.name?.invalid">Required</em>
+                </fieldset>
+            </form>
+    </div> 
+</div>
