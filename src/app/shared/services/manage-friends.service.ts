@@ -9,7 +9,7 @@ export class ManageFriendsService {
   constructor() { }
 
   addFriend(name) {
-    const person: IFriend = { name, id: this.friends.length + 1 }
+    const person: IFriend = { name, id: this.friends.length + 1 };
     this.friends = [...this.friends, person];
   }
 

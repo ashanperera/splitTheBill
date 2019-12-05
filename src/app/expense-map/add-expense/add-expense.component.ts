@@ -5,7 +5,8 @@ import { IFriend } from '../../shared/models/friend.model';
 
 @Component({
   selector: 'app-add-expense',
-  templateUrl: './add-expense.component.html'
+  templateUrl: './add-expense.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddExpenseComponent {
   friendId = 1;

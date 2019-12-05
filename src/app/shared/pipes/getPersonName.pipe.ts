@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'getpersonname', pure: false})
+@Pipe({name: 'getpersonname'})
 export class GetPersonName implements PipeTransform {
   transform(friendId, friendList): string {
     const filteredArr =  friendList.filter(friend => friend.id == friendId);

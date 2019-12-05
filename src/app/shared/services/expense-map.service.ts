@@ -24,7 +24,8 @@ export class ExpenseMapService {
     if (foundEntry) {
       const tempArr = [...this.expenseMap];
       const index = tempArr.indexOf(foundEntry);
-      tempArr[index].expenses.push(currentExpense.amount);
+      // the can be handled by immutable.js , rather I added this as this is a small functionality of simple immutable Arr
+      tempArr[index].expenses = [...tempArr[index].expenses, currentExpense.amount];
       this.expenseMap = tempArr;
     } else {
       const expenseMap: IExpenseMap  = { friendId: currentExpense.friendId, expenses: [currentExpense.amount] };
@@ -38,7 +39,7 @@ export class ExpenseMapService {
       const tempArr = [...this.expenseMap];
       const index = tempArr.indexOf(foundEntry);
       if(tempArr[index].settleInfo) {
-        tempArr[index].settleInfo.push({to: settleInfo.friendTo,  amount: settleInfo.amount});
+        tempArr[index].settleInfo = [...tempArr[index].settleInfo, {to: settleInfo.friendTo,  amount: settleInfo.amount}];
       } else {
         tempArr[index].settleInfo = [{to: settleInfo.friendTo,  amount: settleInfo.amount}];
       }

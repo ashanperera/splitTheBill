@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'gettotal', pure: false})
+@Pipe({name: 'gettotal'})
 export class GetTotalPipe implements PipeTransform {
   transform(expenseArr: number[]): number {
       return expenseArr.reduce((total, currentVal) =>
